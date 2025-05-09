@@ -2,7 +2,7 @@ import { verifyWebhook } from '@clerk/nextjs/webhooks'
 
 export async function POST(req: Request) {
   try {
-    // @ts-expect-error
+    // @ts-expect-error: third-party library has incorrect type definition
     const evt = await verifyWebhook(req)
 
     // Do something with payload
