@@ -1,3 +1,5 @@
+import { createUser } from '@/actions/user.actions'
+import { connectDB } from '@/lib/mongoose'
 import { verifyWebhook } from '@clerk/nextjs/webhooks'
 
 export async function POST(req: Request) {
@@ -10,8 +12,15 @@ export async function POST(req: Request) {
     const eventType = evt.type
 
     if (eventType === 'user.created') {
-        const {id} = evt.data
-        console.log('userId:', id)
+        try {
+            await connectDB()
+            const {id} = evt.data
+            const response = await createUser({clerkId: id})  
+            return new Response(JSON.stringify(response.user), { status: 200 })
+        } catch (error) {
+            console.log(error)
+            return new Response('Error creating user', { status: 400 })
+        }
     }
 
     return new Response('Webhook received', { status: 200 })
