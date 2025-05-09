@@ -2,7 +2,7 @@ import { verifyWebhook } from '@clerk/nextjs/webhooks'
 
 export async function POST(req: Request) {
   try {
-    // @ts-ignore
+    // @ts-expect-error
     const evt = await verifyWebhook(req)
 
     // Do something with payload
@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
     if (eventType === 'user.created') {
         const {id} = evt.data
-        console.log('userId:', evt.data.id)
+        console.log('userId:', id)
     }
 
     return new Response('Webhook received', { status: 200 })
