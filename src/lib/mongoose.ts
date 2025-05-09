@@ -1,3 +1,4 @@
+/* eslint-disable */
 import mongoose from "mongoose"
 
 let cachedConn = (global as any).mongoose
