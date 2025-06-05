@@ -5,7 +5,7 @@ import { connectDB } from "@/lib/mongoose"
 
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
-
+console.log(process.env.GEMINI_API_KEY!)
 const validatePlan = (plan:any) => {
     const validatedPlan = {
         title: plan.title,
@@ -85,7 +85,7 @@ export async function POST(req: Request) {
 
         await connectDB()
         const journal = new Journal({
-            userId,
+            userId: '123456',
             title: plan.title,
             location,
             plan,
