@@ -236,3 +236,12 @@
 .animate-fadeIn {
   animation: fadeIn 0.5s ease-in-out forwards;
 }
+
+.mask-hole {
+  -webkit-mask-image: radial-gradient(circle at center, transparent 60px, black 61px);
+  mask-image: radial-gradient(circle at center, transparent 60px, white 61px);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
