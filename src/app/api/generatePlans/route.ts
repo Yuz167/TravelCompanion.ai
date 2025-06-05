@@ -90,7 +90,7 @@ export async function POST(req: Request) {
             userId: '123456',
             title: plan.title,
             location,
-            plan,
+            plan: plan.plan,
             imageUrl: ""
         })
         await journal.save()
