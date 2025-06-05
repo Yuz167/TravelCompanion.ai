@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GoogleGenerativeAI } from "@google/generative-ai"
+import { GoogleGenAI } from "@google/genai"
 import Journal from "@/models/journal.model"
 import { connectDB } from "@/lib/mongoose"
 
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
-console.log(process.env.GEMINI_API_KEY!)
+const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+
 const validatePlan = (plan:any) => {
     const validatedPlan = {
         title: plan.title,
@@ -29,14 +29,7 @@ const validatePlan = (plan:any) => {
 export async function POST(req: Request) {
     try {
         const {preferredSites, location, daysStaying, type, firtTime} = await req.json()
-        const model = genAI.getGenerativeModel({
-            model: "gemini-2.0-flash-001",
-            generationConfig: {
-            temperature: 0.4,
-            topP: 0.9,
-            responseMimeType: "application/json",
-            },
-        });
+
         const prompt = `You are an experienced tour guide creating a personalized travel plan based on:
         Location: ${location}
         DaysStaying: ${daysStaying}
@@ -77,10 +70,19 @@ export async function POST(req: Request) {
         
         DO NOT add any fields that are not in this example. Your response must be a valid JSON object with no additional text.`;
 
-        const result = await model.generateContent(prompt);
-        const planText = result.response.text();
+        const response = await genAI.models.generateContent({
+            model: "gemini-2.0-flash",
+            contents: prompt,
+            config: {
+                temperature: 0.4,
+                topP: 0.9,
+                responseMimeType: "application/json",
+            },
+        });
 
-        let plan = JSON.parse(planText);
+        const planText = response.text
+
+        let plan = JSON.parse(planText!);
         plan = validatePlan(plan);
 
         await connectDB()
@@ -95,7 +97,7 @@ export async function POST(req: Request) {
         return new Response('Plan successfully generated', { status: 200 })
     } catch (error:any) {   
         console.log(error)
-        return new Response(JSON.stringify({error:error.message}), { status: 500, 
+        return new Response(JSON.stringify({error:error.message, }), { status: 500, 
             headers: { 'Content-Type': 'application/json' } })
     }
 
