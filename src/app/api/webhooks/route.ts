@@ -29,7 +29,7 @@ export async function POST(req: Request) {
         try {
             await connectDB()
             const {id} = evt.data
-            const response = await deleteUser(id!)  
+            await deleteUser(id!)  
             return new Response(JSON.stringify({ success: true }), {
                 status: 200,
                 headers: { 'Content-Type': 'application/json' }

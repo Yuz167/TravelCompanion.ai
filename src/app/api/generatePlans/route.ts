@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GoogleGenerativeAI } from "@google/generative-ai"
 import Journal from "@/models/journal.model"
 import { connectDB } from "@/lib/mongoose"
