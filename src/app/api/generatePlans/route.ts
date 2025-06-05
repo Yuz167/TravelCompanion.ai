@@ -28,7 +28,7 @@ const validatePlan = (plan:any) => {
 
 export async function POST(req: Request) {
     try {
-        const {preferredSites, location, daysStaying, type, firtTime, userId} = await req.json()
+        const {preferredSites, location, daysStaying, type, firtTime} = await req.json()
         const model = genAI.getGenerativeModel({
             model: "gemini-2.0-flash-001",
             generationConfig: {
