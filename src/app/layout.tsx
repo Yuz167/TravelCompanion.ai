@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Providers from "./provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,22 +28,24 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <div className="fixed inset-0 -z-1">
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background"></div>
-            <div className="absolute inset-0 bg-[linear-gradient(var(--cyber-grid-color)_1px,transparent_1px),linear-gradient(90deg,var(--cyber-grid-color)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-          </div>
+      <Providers>
+        <html lang="en">
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <div className="fixed inset-0 -z-1">
+              <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background"></div>
+              <div className="absolute inset-0 bg-[linear-gradient(var(--cyber-grid-color)_1px,transparent_1px),linear-gradient(90deg,var(--cyber-grid-color)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+            </div>
 
-          <Navbar />
-          <main className="pt-24 flex-grow">{children}</main>
-          <div className='w-60 h-60 border-3 border-white flex justify-center items-center bg-white mask-hole'>
-          </div>
-          <Footer />
-        </body>
-      </html>
+            <Navbar />
+            <main className="pt-24 flex-grow">{children}</main>
+            {/* <div className='w-60 h-60 border-3 border-white flex justify-center items-center bg-white mask-hole'>
+            </div> */}
+            <Footer />
+          </body>
+        </html>
+      </Providers>
     </ClerkProvider>
   );
 }

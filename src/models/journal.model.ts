@@ -1,6 +1,8 @@
-import { model, Schema } from "mongoose";
+import { ItineraryType } from "@/lib/interfaces";
+import { time } from "console";
+import { model, models, Schema } from "mongoose";
 
-const JournalSchema = new Schema({
+const JournalSchema = new Schema<ItineraryType>({
     userId:{
         type: String,
         required: true
@@ -26,13 +28,8 @@ const JournalSchema = new Schema({
         }],
         required: true
     },
-    imageUrl: {
-        type: String,
-        trim: true,
-        default: null
-    }
-})
+}, {timestamps: true})
 
-const Journal = model('Journal', JournalSchema)
+const Journal = models.Itinerary || model<ItineraryType>('Journal', JournalSchema);
 
 export default Journal

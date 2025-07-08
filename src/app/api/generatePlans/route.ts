@@ -28,20 +28,20 @@ const validatePlan = (plan:any) => {
 
 export async function POST(req: Request) {
     try {
-        const {preferredSites, location, daysStaying, type, firtTime} = await req.json()
+        const {preferredSites, location, daysStaying, type, firstTime, userId} = await req.json()
 
         const prompt = `You are an experienced tour guide creating a personalized travel plan based on:
         Location: ${location}
         DaysStaying: ${daysStaying}
         Type: ${type}
-        FirtTime: ${firtTime? "true":"false"}
+        FirstTime: ${firstTime? "true":"false"}
         PreferredSites: ${preferredSites}
         
         As a professional tour guide:
         - Create a personalized itinerary based on the user's informations above.
         - Create a tight schedule(for travellers who want to visit as many sites as possible) or a relaxed/flexible schedule(for travellers who want to focuse on the iconic sites and don't want to be too tired) based on the user's "Type" field above.
         - Account for the user's "FirtTime" field above. If the user is a first time traveller, schedule them iconic and famous sites. If not, schedule them sites they may have not been to in the past(less famous but still worth visiting sites).
-        - If the user's "PreferredSites" field is not empty, add these sites to the itinerary regardless of whether they are the first time traveller or not.
+        - "PreferredSites" shows the kinds of attractions or experiences the user is most interested in (nature, food, history, museums, shopping, etc). This should be used to help you plan the itinerary, but it does not need to be the entire itinerary.
 
         CRITICAL SCHEMA INSTRUCTIONS:
         - Your output MUST contain ONLY the fields specified below, NO ADDITIONAL FIELDS
@@ -87,11 +87,10 @@ export async function POST(req: Request) {
 
         await connectDB()
         const journal = new Journal({
-            userId: '123456',
+            userId,
             title: plan.title,
             location,
             plan: plan.plan,
-            imageUrl: ""
         })
         await journal.save()
         return new Response('Plan successfully generated', { status: 200 })
