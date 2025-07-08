@@ -1,8 +1,7 @@
 // app/api/data/route.ts
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { NextResponse } from 'next/server';
-import { use } from 'react';
+
 
 export function useFetchItinerary({userId}:{userId:string}) {
     return useQuery({

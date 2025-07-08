@@ -1,5 +1,5 @@
 import axios from "axios"
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 function ImageGenerator({location}:{location:string}){
     const [image, setImage] = useState<string>("")

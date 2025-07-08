@@ -1,4 +1,4 @@
-import { Document, Schema, model, models } from 'mongoose';
+import { Document } from 'mongoose';
 
 export interface Activity {
     site: string,

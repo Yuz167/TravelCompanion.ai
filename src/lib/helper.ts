@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Journal from "@/models/journal.model"
 import { connectDB } from "./mongoose"
 
 
 
-export async function fetchItinerary({useId}:{useId:string}){
+export async function fetchItinerary({useId}:{useId:string|undefined}){
     try {
         await connectDB()
         const itinerary = await Journal.find({userId: useId}).sort({createdAt: -1})

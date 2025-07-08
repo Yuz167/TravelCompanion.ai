@@ -1,5 +1,4 @@
 import { ItineraryType } from "@/lib/interfaces";
-import { time } from "console";
 import { model, models, Schema } from "mongoose";
 
 const JournalSchema = new Schema<ItineraryType>({

@@ -1,5 +1,5 @@
  "use client";
- import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+ import React, { useLayoutEffect, useRef, useState } from 'react'
  import { useUser } from "@clerk/nextjs";
 import Itinerary from '@/components/Itinerary';
 import gsap from "gsap";
@@ -25,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
  const ProfilePage = () => {
   const { user } = useUser();
   const [selectedItinerary, setSelectedItinerary] = useState<number>(0);
-  const {data, isFetching} = useFetchItinerary({userId:user?.id!})
+  const {data, isFetching} = useFetchItinerary({userId : user?.id! ?? ''})
   const timeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const descriptionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -33,6 +33,7 @@ gsap.registerPlugin(ScrollTrigger);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const divRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const timelines = useRef<gsap.core.Timeline[]>([]);
 
   useLayoutEffect(()=>{
     if(!data) return;
@@ -42,7 +43,6 @@ gsap.registerPlugin(ScrollTrigger);
     const titleRect = titleRefs.current[0]?.getBoundingClientRect();
     const descriptionRect = descriptionRefs.current[0]?.getBoundingClientRect();
     const imageRect = imageRefs.current[0]?.getBoundingClientRect();
-    const timelines = useRef<gsap.core.Timeline[]>([]);
 
     divRefs.current.forEach((div:HTMLDivElement|null, index:number)=>{
       const tl = gsap.timeline({
@@ -147,11 +147,11 @@ gsap.registerPlugin(ScrollTrigger);
         <div ref={containerRef} className='border border-gray-500 relative py-6'>
           <div className='h-20 bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl absolute top-0 w-full z-10' />
           <div ref={scrollRef} className='max-h-[600px] overflow-y-scroll'>
-            {data.itinerary[selectedItinerary].plan.map((plan:PlanActivity, index:number) => (
-              <div>
+            {data.itinerary[selectedItinerary].plan.map((plan:PlanActivity) => (
+              <div key={plan.day}>
                 <h1 className='text-2xl font-bold sticky top-0 pl-12 z-20'>{'Day ' + plan.day}</h1>
                 {plan.activities.map((activity:Activity, index:number) =>  (
-                    <div ref={(el) => {divRefs.current[index] = el}} className='md:max-w-4xl mx-auto max-w-sm space-y-20 py-5'>
+                    <div key={index} ref={(el) => {divRefs.current[index] = el}} className='md:max-w-4xl mx-auto max-w-sm space-y-20 py-5'>
                       <div ref={(el) => {imageRefs.current[index] = el}} className='w-90 h-90 rotate-10 border border-amber-500 float-right ml-5 mb-2 mt-3'>
                         <ImageGenerator location={activity.site}/>
                       </div>
