@@ -24,8 +24,9 @@ gsap.registerPlugin(ScrollTrigger);
  }
  const ProfilePage = () => {
   const { user } = useUser();
+  const userId = user?.id;
   const [selectedItinerary, setSelectedItinerary] = useState<number>(0);
-  const {data, isFetching} = useFetchItinerary({userId : user?.id! ?? ''})
+  const {data, isFetching} = useFetchItinerary({userId : userId ?? ''})
   const timeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const descriptionRefs = useRef<(HTMLDivElement | null)[]>([]);
