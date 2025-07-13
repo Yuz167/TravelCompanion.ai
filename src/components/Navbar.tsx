@@ -1,7 +1,7 @@
 "use client";
 
 import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
-import { DumbbellIcon, HomeIcon, UserIcon, ZapIcon } from "lucide-react";
+import { TicketsPlane, HomeIcon, UserIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
@@ -39,7 +39,7 @@ const Navbar = () => {
                 href="/generate-program"
                 className="flex items-center gap-1.5 text-sm hover:text-primary transition-colors"
               >
-                <DumbbellIcon size={16} />
+                <TicketsPlane size={16} />
                 <span>Generate</span>
               </Link>
 
