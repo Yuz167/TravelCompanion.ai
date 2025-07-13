@@ -39,7 +39,7 @@ export default function RootLayout({
             </div>
 
             <Navbar />
-            <main className="pt-24 flex-grow">{children}</main>
+            <main className="pt-16 flex-grow">{children}</main>
             {/* <div className='w-60 h-60 border-3 border-white flex justify-center items-center bg-white mask-hole'>
             </div> */}
             <Footer />

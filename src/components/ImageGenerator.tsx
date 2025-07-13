@@ -7,7 +7,7 @@ function ImageGenerator({location}:{location:string}){
     useEffect(() => {
         const getImage = async () => {
             try{
-                const response = await axios.get(`https://api.unsplash.com/search/photos?query=${location}&per_page=1&client_id=${process.env.UNSPLASH_ACCESS_KEY}`)
+                const response = await axios.get(`https://api.unsplash.com/search/photos?query=${location}&per_page=1&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`)
                 const data = response.data
                 setImage(data.results[0].urls.regular)
             }catch(error){
@@ -18,7 +18,7 @@ function ImageGenerator({location}:{location:string}){
     }, [location])
     
 
-    return <img src={image} alt="avatar" className="w-full h-full object-cover"/>
+    return image && <img src={image} alt="avatar" className="w-full h-full object-cover"/>
 }
 
 export default ImageGenerator

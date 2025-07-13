@@ -17,7 +17,9 @@ const Navbar = () => {
             <ZapIcon className="w-4 h-4 text-primary" />
           </div>
           <span className="text-xl font-bold font-mono">
-            Travel<span className="text-primary">Companion</span>.ai
+            <span className="text-[#6b8f71]">Travel</span>
+            <span className="text-primary">Companion</span>
+            <span className="text-[#6b8f71]">.ai</span>
           </span>
         </Link>
 

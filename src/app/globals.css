@@ -49,8 +49,8 @@
 
   /* Cyberpunk Theme Colors */
   --cyber-black: #000000;
-  --cyber-dark: #0a0c14;
-  --cyber-blue-bright: #18cef2;
+  --cyber-dark: #e6f0e9;
+  --cyber-blue-bright: #2e5e4e;
   --cyber-blue: #1089bd;
   --cyber-blue-dark: #0b4a7d;
   --cyber-blue-glow: #38bdf8;
@@ -58,10 +58,10 @@
 
   /* Background */
   --background: var(--cyber-dark);
-  --foreground: #f2f2f2;
+  --foreground: #6b8f71;
 
   /* Card and popover elements */
-  --card: #111827;
+  --card: #6b8f71;
   --card-foreground: #f2f2f2;
   --popover: #111827;
   --popover-foreground: #f2f2f2;
@@ -72,7 +72,7 @@
 
   /* Secondary - Darker blue */
   --secondary: var(--cyber-blue);
-  --secondary-foreground: #ffffff;
+  --secondary-foreground: #f8f9f4;
 
   /* Accent - Light blue with glow */
   --accent: var(--cyber-blue-glow);
@@ -80,7 +80,7 @@
 
   /* Muted elements */
   --muted: #1e293b;
-  --muted-foreground: #94a3b8;
+  --muted-foreground: #F0FFF0;
 
   /* System colors */
   --destructive: #ef4444;

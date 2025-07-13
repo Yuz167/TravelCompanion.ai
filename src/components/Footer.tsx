@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-background/80 backdrop-blur-sm">
+    <footer className="border-t border-border bg-[#2E4E1E] backdrop-blur-sm">
       {/* Top border glow */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
@@ -13,14 +13,16 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-start gap-2">
             <Link href="/" className="flex items-center gap-2">
               <div className="p-1 bg-primary/10 rounded">
-                <ZapIcon className="w-4 h-4 text-primary" />
+                <ZapIcon className="w-4 h-4 text-white" />
               </div>
-              <span className="text-xl font-bold font-mono">
-                code<span className="text-primary">flex</span>.ai
-              </span>
+              <div className="text-xl font-bold font-mono">
+                <span className="text-white">Travel</span>
+                <span className="text-black">Companion</span>
+                <span className="text-white">.ai</span>
+              </div>
             </Link>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} codeflex.ai - All rights reserved
+              © {new Date().getFullYear()} TravelCompanion.ai - All rights reserved
             </p>
           </div>
 
@@ -65,7 +67,7 @@ const Footer = () => {
           </div>
 
           {/* Status */}
-          <div className="flex items-center gap-2 px-3 py-2 border border-border rounded-md bg-background/50">
+          <div className="flex items-center gap-2 px-3 py-2 border border-border rounded-md bg-black/50">
             <div className="w-2 h-2 rounded-full bg-green-500"></div>
             <span className="text-xs font-mono">SYSTEM OPERATIONAL</span>
           </div>

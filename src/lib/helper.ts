@@ -2,8 +2,6 @@
 import Journal from "@/models/journal.model"
 import { connectDB } from "./mongoose"
 
-
-
 export async function fetchItinerary({useId}:{useId:string|undefined}){
     try {
         await connectDB()
@@ -14,3 +12,4 @@ export async function fetchItinerary({useId}:{useId:string|undefined}){
         throw new Error(`Error fetching itinerary: ${error.message || 'Unknown error'}`)
     }
 }
+

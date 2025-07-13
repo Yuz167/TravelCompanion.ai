@@ -47,7 +47,7 @@ export async function POST(req: Request) {
         - Your output MUST contain ONLY the fields specified below, NO ADDITIONAL FIELDS
         - "day" MUST ALWAYS be NUMBERS, never strings
         - "time" MUST ALWAYS be strings, like "10:00 AM", "2:00 PM", etc.
-        - "description" should only and briefly describe the site.
+        - "description" should describe the site in details, and explain why you recommend it.
         - NEVER include strings for numerical fields
         - NEVER add extra fields not shown in the example below
         
