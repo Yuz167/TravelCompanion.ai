@@ -31,6 +31,7 @@ const calculateDeltaXY = ({
 const ProfilePage = () => {
   const { user } = useUser();
   const userId = user?.id;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedItinerary, setSelectedItinerary] = useState<number>(
     typeof window !== 'undefined' && localStorage.getItem('selectedItinerary')
       ? parseInt(localStorage.getItem('selectedItinerary')!, 10)
