@@ -213,7 +213,6 @@ const ProfilePage = () => {
                     index={index}
                     isSelected={true}
                     isActive={true}
-                    setSelectedItinerary={setSelectedItinerary}
                     title={item.title}
                   />
                 );
@@ -224,7 +223,6 @@ const ProfilePage = () => {
                   index={index}
                   isSelected={false}
                   isActive={false}
-                  setSelectedItinerary={setSelectedItinerary}
                   title={item.title}
                 />
               );

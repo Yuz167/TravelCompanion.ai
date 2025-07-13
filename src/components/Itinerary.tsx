@@ -4,13 +4,11 @@ const Itinerary = ({
   isSelected,
   isActive,
   title,
-  setSelectedItinerary,
   index,
 }: {
   isSelected?: boolean;
   isActive?: boolean;
   title: string;
-  setSelectedItinerary: Dispatch<SetStateAction<number>>;
   index: number;
 }) => {
   return (
